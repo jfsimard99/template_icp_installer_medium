@@ -1,756 +1,323 @@
 {
-    "input_groups": [
-      {
-        "name": "cloud",
-        "label": "Cloud Input Variables"
-      },
-      {
-        "name": "generalvmtemplate",
-        "label": "IBM Cloud Private Template Settings"
-      },
-      {
-        "name": "icpmultinode",
-        "label": "IBM Cloud Private Multi-Node Settings"
-      },
-      {
-        "name": "icpdownload",
-        "label": "IBM Cloud Private Download Settings"
-      },
-      {
-        "name": "icpsshkey",
-        "label": "IBM Cloud Private SSH Keys Settings"
-      },
-      {
-        "name": "bootvirtualmachine",
-        "label": "Boot Node Input Settings"
-      },
-      {
-        "name": "mgmtvirtualmachine",
-        "label": "Management Node Input Settings"
-      },
-      {
-        "name": "mastervirtualmachine",
-        "label": "Master Nodes Input Settings"
-      },
-      {
-        "name": "proxyvirtualmachine",
-        "label": "Proxy Nodes Input Settings"
-      },
-      {
-        "name": "workervirtualmachine",
-        "label": "Worker Nodes Input Settings"
-      },
-      {
-        "name": "vavirtualmachine",
-        "label": "Vulnerability Advisor Node Input Settings"
-      },
-      {
-        "name": "nfs_servervirtualmachine",
-        "label": "NFS Server Node Input Settings"
-      }
-
-    ],
+  "input_datatypes": [ ],
+  "input_namespaces": [ ],
+  "output_namespace": "",
+  "input_groups": [
+    {
+      "name": "cloud",
+      "label": "Cloud Input Variables"
+    },
+    {
+      "name": "generalvmtemplate",
+      "label": "IBM Cloud Private Template Settings"
+    },
+    {
+      "name": "icpmultinode",
+      "label": "IBM Cloud Private Multi-Node Settings"
+    },
+    {
+      "name": "icpdownload",
+      "label": "IBM Cloud Private Download Settings"
+    },
+    {
+      "name": "icpsshkey",
+      "label": "IBM Cloud Private SSH Keys Settings"
+    },
+    {
+      "name": "bootvirtualmachine",
+      "label": "Boot Node Input Settings"
+    },
+    {
+      "name": "mgmtvirtualmachine",
+      "label": "Management Node Input Settings"
+    },
+    {
+      "name": "mastervirtualmachine",
+      "label": "Master Nodes Input Settings"
+    },
+    {
+      "name": "proxyvirtualmachine",
+      "label": "Proxy Nodes Input Settings"
+    },
+    {
+      "name": "workervirtualmachine",
+      "label": "Worker Nodes Input Settings"
+    },
+    {
+      "name": "vavirtualmachine",
+      "label": "Vulnerability Advisor Node Input Settings"
+    },
+    {
+      "name": "nfs_servervirtualmachine",
+      "label": "NFS Server Node Input Settings"
+    }
+  ],
+  "output_groups": [ ],
   "template_input_params": [
     {
       "name": "boot_hostname_ip",
-      "default": {
-        "Enter Hostname": "0.0.0.0"
-      },
+      "label": "Boot Node Hostname ",
       "description": "Boot Node Hostname  and IP Address",
       "type": "map",
+      "default": { "Enter Hostname": "0.0.0.0" },
+      "validation": "",
+      "group_name": "bootvirtualmachine",
       "required": true,
       "secured": false,
-      "label": "Boot Node Hostname ",
       "hidden": false,
       "immutable": false,
-      "group_name": "bootvirtualmachine"
-    },
-    {
-      "name": "boot_memory",
-      "description": "Boot Node Node Memory Allocation (mb)",
-      "default": "8192",
-      "type": "string",
-      "required": true,
-      "secured": false,
-      "label": "Boot Node Memory Allocation (mb)",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "bootvirtualmachine"
+      "immutable_after_create": false
     },
     {
       "name": "boot_vcpu",
-      "description": "Boot Node vCPU Allocation",
-      "default": "4",
-      "type": "string",
-      "required": true,
-      "secured": false,
       "label": "Boot Node vCPU Allocation",
+      "description": "Boot Node vCPU Allocation",
+      "type": "string",
+      "default": "4",
+      "validation": "",
+      "group_name": "bootvirtualmachine",
+      "required": true,
+      "secured": false,
       "hidden": false,
       "immutable": false,
-      "group_name": "bootvirtualmachine"
+      "immutable_after_create": false
     },
     {
-      "name": "boot_vm_disk1_keep_on_remove",
-      "default": "false",
+      "name": "boot_memory",
+      "label": "Boot Node Memory Allocation (mb)",
+      "description": "Boot Node Node Memory Allocation (mb)",
       "type": "string",
+      "default": "8192",
+      "validation": "",
+      "group_name": "bootvirtualmachine",
       "required": true,
       "secured": false,
-      "label": "Boot Node Keep Disk on Remove",
-      "hidden": true,
-      "immutable": false,
-      "group_name": "bootvirtualmachine"
-    },
-    {
-      "name": "boot_vm_disk1_size",
-      "description": "Boot Node Disk Size Disk 1 (GB)",
-      "default": "150",
-      "type": "string",
-      "required": true,
-      "secured": false,
-      "label": "Boot Node Disk Size (GB)",
       "hidden": false,
       "immutable": false,
-      "group_name": "bootvirtualmachine"
-    },
-    {
-      "name": "boot_vm_disk2_enable",
-      "default": "false",
-      "type": "string",
-      "required": true,
-      "secured": false,
-      "label": "Boot Node Datastore Name - Disk 2",
-      "hidden": true,
-      "immutable": false,
-      "options": [
-        {
-          "value": "true",
-          "label": "true"
-        },
-        {
-          "value": "false",
-          "label": "false",
-          "default": true
-        }
-      ],
-      "group_name": "bootvirtualmachine"
-    },
-    {
-      "name": "boot_vm_disk2_keep_on_remove",
-      "default": "false",
-      "type": "string",
-      "required": true,
-      "secured": false,
-      "label": "Boot Node Keep Disk on Remove - Disk 2",
-      "hidden": true,
-      "immutable": false,
-      "group_name": "bootvirtualmachine"
-    },
-    {
-      "name": "boot_vm_disk2_size",
-      "description": "Boot Node Disk Size Disk 2 (GB)",
-      "default": "50",
-      "type": "string",
-      "required": true,
-      "secured": false,
-      "label": "Boot Node Disk Size (GB)",
-      "hidden": true,
-      "immutable": false,
-      "group_name": "bootvirtualmachine"
+      "immutable_after_create": false
     },
     {
       "name": "boot_vm_ipv4_gateway",
+      "label": "Boot Node IP Gateway",
       "description": "Boot Node IP Gateway Address",
       "type": "string",
+      "default": "",
+      "validation": "",
+      "group_name": "bootvirtualmachine",
       "required": true,
       "secured": false,
-      "label": "Boot Node IP Gateway",
       "hidden": false,
       "immutable": false,
-      "group_name": "bootvirtualmachine",
-      "regex": "^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$",
+      "immutable_after_create": false,
       "regexdesc": "Provide a Valid IP address for the Virtual Machine Gateway"
     },
     {
       "name": "boot_vm_ipv4_prefix_length",
-      "description": "Integer value between 1 and 32 for the prefix length, CIDR, to use when statically assigning an IPv4 address",
-      "type": "string",
-      "required": true,
-      "secured": false,
       "label": "Boot Node IP Netmask (CIDR)",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "bootvirtualmachine",
-      "regex": "^([8-9]|[1-2][0-9]|3[0-2])$"
-    },
-    {
-      "name": "download_user",
-      "description": "Username to access a secure repository location",
-      "type": "string",
-      "required": false,
-      "secured": false,
-      "label": "Repository User Name (Optional)",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "icpdownload"
-    },
-    {
-      "name": "download_user_password",
-      "description": "Password for the Username to access a secure repository location",
-      "type": "password",
-      "required": false,
-      "secured": true,
-      "label": "Repository User Password (Optional)",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "icpdownload"
-    },
-    {
-      "name": "docker_binary_url",
-      "description": "Location of the Docker Binaries used by IBM Cloud Private",
-      "type": "string",
-      "required": true,
-      "secured": false,
-      "label": "IBM Cloud Private Docker Download Location (http|https|ftp|file)",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "icpdownload",
-      "regex": "(https?|ftp|file)://[-A-Za-z0-9\\+&@#/%?=~_|!:,.;]*[-A-Za-z0-9\\+&@#/%=~_|]",
-      "regexdesc": "http|https|ftp|file Location to download the IBM Cloud Private Docker Binaries"
-    },
-    {
-      "name": "enable_kibana",
-      "description": "Enable / Disable the installation of Kibana Service in IBM Cloud Private Installation",
-      "default": "false",
-      "type": "string",
-      "required": true,
-      "secured": false,
-      "label": "Enable IBM Cloud Private Kibana",
-      "hidden": false,
-      "immutable": false,
-      "options": [
-        {
-          "value": "true",
-          "label": "true"
-        },
-        {
-          "value": "false",
-          "label": "false",
-          "default": true
-        }
-      ],
-      "group_name": "icpmultinode"
-    },
-    {
-      "name": "enable_metering",
-      "description": "Enable / Disable the installation of Metering Service in IBM Cloud Private Installation",
-      "default": "true",
-      "type": "string",
-      "required": true,
-      "secured": false,
-      "label": "Enable IBM Cloud Private Metering",
-      "hidden": false,
-      "immutable": false,
-      "options": [
-        {
-          "value": "true",
-          "label": "true",
-          "default": true
-        },
-        {
-          "value": "false",
-          "label": "false"
-        }
-      ],
-      "group_name": "icpmultinode"
-    },
-    {
-      "name": "worker_enable_glusterFS",
-      "description": "Enable / Disable the installation of Gluster File System in  IBM Cloud Private Installation",
-      "default": "true",
-      "type": "string",
-      "required": true,
-      "secured": false,
-      "label": "Enable IBM Cloud Private GlusterFS on worker Nodes",
-      "hidden": true,
-      "immutable": false,
-      "options": [
-        {
-          "value": "true",
-          "label": "true",
-          "default": true
-        },
-        {
-          "value": "false",
-          "label": "false"
-        }
-      ],
-      "group_name": "icpmultinode"
-    },
-    {
-      "name": "icp_cluster_name",
-      "description": "IBM Cloud Private Cluster Name",
-      "type": "string",
-      "required": true,
-      "secured": false,
-      "label": "IBM Cloud Private Cluster Name",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "icpmultinode",
-      "regex": "^[a-z0-9.-]{1,80}$"
-    },
-    {
-      "name": "icp_admin_user",
-      "description": "IBM Cloud Private Admin User Name",
-      "default": "admin",
-      "type": "string",
-      "required": true,
-      "secured": false,
-      "label": "IBM Cloud Private Admin Username",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "icpmultinode"
-    },
-    {
-      "name": "icp_admin_password",
-      "description": "IBM Cloud Private Admin User Password",
-      "default": "admin",
-      "type": "password",
-      "required": true,
-      "secured": true,
-      "label": "IBM Cloud Private Admin Password",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "icpmultinode"
-    },
-    {
-      "name": "icp_binary_url",
-      "description": "Location of the IBM Cloud Private Binaries used by IBM Cloud Private",
-      "type": "string",
-      "required": true,
-      "secured": false,
-      "label": "IBM Cloud Private Download Location (http|https|ftp|file)",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "icpdownload",
-      "regex": "(https?|ftp|file)://[-A-Za-z0-9\\+&@#/%?=~_|!:,.;]*[-A-Za-z0-9\\+&@#/%=~_|]",
-      "regexdesc": "http|https|ftp|file Location to download the IBM Cloud Private Binaries"
-    },
-    {
-      "name": "icp_private_ssh_key",
-      "description": "IBM Cloud Private - Private SSH key for access between boxes (base64 encoded)",
-      "default": "",
-      "type": "string",
-      "required": true,
-      "secured": false,
-      "label": "IBM Cloud Private - Private SSH Key",
-      "hidden": true,
-      "immutable": false,
-      "group_name": "icpsshkey"
-    },
-    {
-      "name": "icp_public_ssh_key",
-      "description": "IBM Cloud Private - Public SSH key for access between boxes",
-      "default": "",
-      "type": "string",
-      "required": true,
-      "secured": false,
-      "label": "IBM Cloud Private - Public SSH Key",
-      "hidden": true,
-      "immutable": false,
-      "group_name": "icpsshkey"
-    },
-    {
-      "name": "icp_version",
-      "description": "IBM Cloud Private Version Number",
-      "default": "2.1.0.3",
-      "type": "string",
-      "required": true,
-      "secured": false,
-      "label": "IBM Cloud Private Version",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "icpdownload"
-    },
-    {
-      "name": "kub_version",
-      "description": "IBM Cloud Private Kubernetes Version Number",
-      "default": "1.10.0",
-      "type": "string",
-      "required": true,
-      "secured": false,
-      "label": "Kubernetes Version",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "icpdownload"
-    },
-    {
-      "name": "enable_vm_management",
-      "default": "true",
-      "type": "string",
-      "required": true,
-      "secured": false,
-      "label": "Enable IBM Cloud Private Management Node Nodes",
-      "hidden": false,
-      "immutable": false,
-      "options": [
-        {
-          "value": "true",
-          "label": "true",
-          "default": true
-        },
-        {
-          "value": "false",
-          "label": "false"
-        }
-      ],
-      "group_name": "mgmtvirtualmachine"
-    },
-    {
-      "name": "manage_hostname_ip",
-      "default": {
-        "Enter Hostname": "0.0.0.0"
-      },
-      "description": "Management Node Hostname and IP Address",
-      "type": "map",
-      "required": false,
-      "secured": false,
-      "label": "Management Node Hostname",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "mgmtvirtualmachine"
-    },
-    {
-      "name": "manage_memory",
-      "description": "Management Node Node Memory Allocation (mb)",
-      "default": "8192",
-      "type": "string",
-      "required": false,
-      "secured": false,
-      "label": "Management Node Memory Allocation (mb)",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "mgmtvirtualmachine"
-    },
-    {
-      "name": "manage_vcpu",
-      "description": "Management Node vCPU Allocation",
-      "default": "8",
-      "type": "string",
-      "required": false,
-      "secured": false,
-      "label": "Management Node vCPU Allocation",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "mgmtvirtualmachine"
-    },
-    {
-      "name": "manage_vm_disk1_keep_on_remove",
-      "default": "false",
-      "type": "string",
-      "required": false,
-      "secured": false,
-      "label": "Management Node Keep Disk on Remove",
-      "hidden": true,
-      "immutable": false,
-      "group_name": "mgmtvirtualmachine"
-    },
-    {
-      "name": "manage_vm_disk1_size",
-      "description": "Management Node Disk Size Disk 1 (GB)",
-      "default": "150",
-      "type": "string",
-      "required": false,
-      "secured": false,
-      "label": "Management Node Disk Size (GB)",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "mgmtvirtualmachine"
-    },
-    {
-      "name": "manage_vm_disk2_enable",
-      "default": "false",
-      "type": "string",
-      "required": false,
-      "secured": false,
-      "label": "Management Node Datastore Name - Disk 2",
-      "hidden": true,
-      "immutable": false,
-      "options": [
-        {
-          "value": "true",
-          "label": "true"
-        },
-        {
-          "value": "false",
-          "label": "false",
-          "default": true
-        }
-      ],
-      "group_name": "mgmtvirtualmachine"
-    },
-    {
-      "name": "manage_vm_disk2_keep_on_remove",
-      "default": "false",
-      "type": "string",
-      "required": false,
-      "secured": false,
-      "label": "Management Node Keep Disk on Remove - Disk 2",
-      "hidden": true,
-      "immutable": false,
-      "group_name": "mgmtvirtualmachine"
-    },
-    {
-      "name": "manage_vm_disk2_size",
-      "description": "Management Node Disk Size Disk 2 (GB)",
-      "default": "50",
-      "type": "string",
-      "required": false,
-      "secured": false,
-      "label": "Management Node Disk Size (GB)",
-      "hidden": true,
-      "immutable": false,
-      "group_name": "mgmtvirtualmachine"
-    },
-    {
-      "name": "manage_vm_ipv4_gateway",
-      "description": "Management Node IP Gateway Address",
-      "type": "string",
-      "required": false,
-      "secured": false,
-      "label": "Management Node IP Gateway",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "mgmtvirtualmachine",
-      "regex": "^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$",
-      "regexdesc": "Provide a Valid IP address for the Virtual Machine Gateway"
-    },
-    {
-      "name": "manage_vm_ipv4_prefix_length",
       "description": "Integer value between 1 and 32 for the prefix length, CIDR, to use when statically assigning an IPv4 address",
       "type": "string",
-      "required": false,
+      "default": "",
+      "validation": "",
+      "group_name": "bootvirtualmachine",
+      "required": true,
       "secured": false,
-      "label": "Management Node IP Netmask (CIDR)",
       "hidden": false,
       "immutable": false,
-      "group_name": "mgmtvirtualmachine",
-      "regex": "^([8-9]|[1-2][0-9]|3[0-2])$"
+      "immutable_after_create": false
+    },
+    {
+      "name": "boot_vm_disk1_size",
+      "label": "Boot Node Disk Size (GB)",
+      "description": "Boot Node Disk Size Disk 1 (GB)",
+      "type": "string",
+      "default": "150",
+      "validation": "",
+      "group_name": "bootvirtualmachine",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "boot_vm_disk1_keep_on_remove",
+      "label": "Boot Node Keep Disk on Remove",
+      "description": "Boot Vm Disk 1 Keep On Remove",
+      "type": "string",
+      "default": "false",
+      "validation": "",
+      "group_name": "bootvirtualmachine",
+      "required": true,
+      "secured": false,
+      "hidden": true,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "boot_vm_disk2_enable",
+      "label": "Boot Node Datastore Name - Disk 2",
+      "description": "Boot Vm Disk 2 Enable",
+      "type": "string",
+      "default": "false",
+      "validation": "",
+      "group_name": "bootvirtualmachine",
+      "required": true,
+      "secured": false,
+      "hidden": true,
+      "immutable": false,
+      "immutable_after_create": false,
+      "options": [
+        {
+          "value": "true",
+          "label": "true"
+        },
+        {
+          "value": "false",
+          "label": "false",
+          "default": true
+        }
+      ]
+    },
+    {
+      "name": "boot_vm_disk2_size",
+      "label": "Boot Node Disk Size (GB)",
+      "description": "Boot Node Disk Size Disk 2 (GB)",
+      "type": "string",
+      "default": "50",
+      "validation": "",
+      "group_name": "bootvirtualmachine",
+      "required": true,
+      "secured": false,
+      "hidden": true,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "boot_vm_disk2_keep_on_remove",
+      "label": "Boot Node Keep Disk on Remove - Disk 2",
+      "description": "Boot Vm Disk 2 Keep On Remove",
+      "type": "string",
+      "default": "false",
+      "validation": "",
+      "group_name": "bootvirtualmachine",
+      "required": true,
+      "secured": false,
+      "hidden": true,
+      "immutable": false,
+      "immutable_after_create": false
     },
     {
       "name": "master_hostname_ip",
-      "default": {
-        "Enter Hostname": "0.0.0.0"
-      },
+      "label": "Master Node Hostname",
       "description": "Master Node Hostname and IP Address",
       "type": "map",
+      "default": { "Enter Hostname": "0.0.0.0" },
+      "validation": "",
+      "group_name": "mastervirtualmachine",
       "required": true,
       "secured": false,
-      "label": "Master Node Hostname",
       "hidden": false,
       "immutable": false,
-      "group_name": "mastervirtualmachine"
-    },
-    {
-      "name": "master_memory",
-      "description": "Master Node Node Memory Allocation (mb)",
-      "default": "16384",
-      "type": "string",
-      "required": true,
-      "secured": false,
-      "label": "Master Node Memory Allocation (mb)",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "mastervirtualmachine"
+      "immutable_after_create": false
     },
     {
       "name": "master_vcpu",
-      "description": "Master Node vCPU Allocation",
-      "default": "8",
-      "type": "string",
-      "required": true,
-      "secured": false,
       "label": "Master Node vCPU Allocation",
+      "description": "Master Node vCPU Allocation",
+      "type": "string",
+      "default": "8",
+      "validation": "",
+      "group_name": "mastervirtualmachine",
+      "required": true,
+      "secured": false,
       "hidden": false,
       "immutable": false,
-      "group_name": "mastervirtualmachine"
+      "immutable_after_create": false
     },
     {
-      "name": "master_vm_disk1_keep_on_remove",
-      "default": "false",
+      "name": "master_memory",
+      "label": "Master Node Memory Allocation (mb)",
+      "description": "Master Node Node Memory Allocation (mb)",
       "type": "string",
+      "default": "16384",
+      "validation": "",
+      "group_name": "mastervirtualmachine",
       "required": true,
       "secured": false,
-      "label": "Master Node Keep Disk on Remove",
-      "hidden": true,
-      "immutable": false,
-      "group_name": "mastervirtualmachine"
-    },
-    {
-      "name": "master_vm_disk1_size",
-      "description": "Master Node Disk Size Disk 1 (GB)",
-      "default": "200",
-      "type": "string",
-      "required": true,
-      "secured": false,
-      "label": "Master Node Disk Size (GB)",
       "hidden": false,
       "immutable": false,
-      "group_name": "mastervirtualmachine"
-    },
-    {
-      "name": "master_vm_disk2_enable",
-      "default": "false",
-      "type": "string",
-      "required": true,
-      "secured": false,
-      "label": "Master Node Datastore Name - Disk 2",
-      "hidden": true,
-      "immutable": false,
-      "options": [
-        {
-          "value": "true",
-          "label": "true"
-        },
-        {
-          "value": "false",
-          "label": "false",
-          "default": true
-        }
-      ],
-      "group_name": "mastervirtualmachine"
-    },
-    {
-      "name": "master_vm_disk2_keep_on_remove",
-      "default": "false",
-      "type": "string",
-      "required": true,
-      "secured": false,
-      "label": "Master Node Keep Disk on Remove - Disk 2",
-      "hidden": true,
-      "immutable": false,
-      "group_name": "mastervirtualmachine"
-    },
-    {
-      "name": "master_vm_disk2_size",
-      "description": "Master Node Disk Size Disk 2 (GB)",
-      "default": "50",
-      "type": "string",
-      "required": true,
-      "secured": false,
-      "label": "Master Node Disk Size (GB)",
-      "hidden": true,
-      "immutable": false,
-      "group_name": "mastervirtualmachine"
+      "immutable_after_create": false
     },
     {
       "name": "master_vm_ipv4_gateway",
+      "label": "Master Node IP Gateway",
       "description": "Master Node IP Gateway Address",
       "type": "string",
+      "default": "",
+      "validation": "",
+      "group_name": "mastervirtualmachine",
       "required": true,
       "secured": false,
-      "label": "Master Node IP Gateway",
       "hidden": false,
       "immutable": false,
-      "group_name": "mastervirtualmachine",
-      "regex": "^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$",
+      "immutable_after_create": false,
       "regexdesc": "Provide a Valid IP address for the Virtual Machine Gateway"
     },
     {
       "name": "master_vm_ipv4_prefix_length",
+      "label": "Master Node IP Netmask (CIDR)",
       "description": "Integer value between 1 and 32 for the prefix length, CIDR, to use when statically assigning an IPv4 address",
       "type": "string",
-      "required": true,
-      "secured": false,
-      "label": "Master Node IP Netmask (CIDR)",
-      "hidden": false,
-      "immutable": false,
+      "default": "",
+      "validation": "",
       "group_name": "mastervirtualmachine",
-      "regex": "^([8-9]|[1-2][0-9]|3[0-2])$"
-    },
-    {
-      "name": "master_nfs_folders",
-      "default": [
-        "/var/lib/registry",
-        "/var/lib/icp/audit"
-      ],
-      "type": "list",
       "required": true,
       "secured": false,
-      "label": "Master Node NFS Directories",
-      "hidden": false,
-      "immutable": true,
-      "group_name": "mastervirtualmachine"
-    },
-    {
-      "name": "proxy_hostname_ip",
-      "default": {
-        "Enter Hostname": "0.0.0.0"
-      },
-      "description": "Proxy Node Hostname and IP Address",
-      "type": "map",
-      "required": true,
-      "secured": false,
-      "label": "Proxy Node Hostname",
       "hidden": false,
       "immutable": false,
-      "group_name": "proxyvirtualmachine"
+      "immutable_after_create": false
     },
     {
-      "name": "proxy_memory",
-      "description": "Proxy Node Node Memory Allocation (mb)",
-      "default": "8192",
+      "name": "master_vm_disk1_size",
+      "label": "Master Node Disk Size (GB)",
+      "description": "Master Node Disk Size Disk 1 (GB)",
       "type": "string",
+      "default": "200",
+      "validation": "",
+      "group_name": "mastervirtualmachine",
       "required": true,
       "secured": false,
-      "label": "Proxy Node Memory Allocation (mb)",
       "hidden": false,
       "immutable": false,
-      "group_name": "proxyvirtualmachine"
+      "immutable_after_create": false
     },
     {
-      "name": "proxy_vcpu",
-      "description": "Proxy Node vCPU Allocation",
-      "default": "2",
+      "name": "master_vm_disk1_keep_on_remove",
+      "label": "Master Node Keep Disk on Remove",
+      "description": "Master Vm Disk 1 Keep On Remove",
       "type": "string",
-      "required": true,
-      "secured": false,
-      "label": "Proxy Node vCPU Allocation",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "proxyvirtualmachine"
-    },
-    {
-      "name": "proxy_vm_disk1_keep_on_remove",
       "default": "false",
-      "type": "string",
+      "validation": "",
+      "group_name": "mastervirtualmachine",
       "required": true,
       "secured": false,
-      "label": "Proxy Node Keep Disk on Remove",
       "hidden": true,
       "immutable": false,
-      "group_name": "proxyvirtualmachine"
+      "immutable_after_create": false
     },
     {
-      "name": "proxy_vm_disk1_size",
-      "description": "proxy Node Disk Size Disk 1 (GB)",
-      "default": "100",
+      "name": "master_vm_disk2_enable",
+      "label": "Master Node Datastore Name - Disk 2",
+      "description": "Master Vm Disk 2 Enable",
       "type": "string",
-      "required": true,
-      "secured": false,
-      "label": "Proxy Node Disk Size (GB)",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "proxyvirtualmachine"
-    },
-    {
-      "name": "proxy_vm_disk2_enable",
       "default": "false",
-      "type": "string",
+      "validation": "",
+      "group_name": "mastervirtualmachine",
       "required": true,
       "secured": false,
-      "label": "Proxy Node Datastore Name - Disk 2",
       "hidden": true,
       "immutable": false,
+      "immutable_after_create": false,
       "options": [
         {
           "value": "true",
@@ -761,127 +328,317 @@
           "label": "false",
           "default": true
         }
-      ],
-      "group_name": "proxyvirtualmachine"
+      ]
     },
     {
-      "name": "proxy_vm_disk2_keep_on_remove",
-      "default": "false",
+      "name": "master_vm_disk2_size",
+      "label": "Master Node Disk Size (GB)",
+      "description": "Master Node Disk Size Disk 2 (GB)",
       "type": "string",
-      "required": true,
-      "secured": false,
-      "label": "Proxy Node Keep Disk on Remove - Disk 2",
-      "hidden": true,
-      "immutable": false,
-      "group_name": "proxyvirtualmachine"
-    },
-    {
-      "name": "proxy_vm_disk2_size",
-      "description": "Proxy Node Disk Size Disk 2 (GB)",
       "default": "50",
-      "type": "string",
+      "validation": "",
+      "group_name": "mastervirtualmachine",
       "required": true,
       "secured": false,
-      "label": "Proxy Node Disk Size (GB)",
       "hidden": true,
       "immutable": false,
-      "group_name": "proxyvirtualmachine"
+      "immutable_after_create": false
+    },
+    {
+      "name": "master_vm_disk2_keep_on_remove",
+      "label": "Master Node Keep Disk on Remove - Disk 2",
+      "description": "Master Vm Disk 2 Keep On Remove",
+      "type": "string",
+      "default": "false",
+      "validation": "",
+      "group_name": "mastervirtualmachine",
+      "required": true,
+      "secured": false,
+      "hidden": true,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "master_nfs_folders",
+      "label": "Master Node NFS Directories",
+      "description": "Master Nfs Folders",
+      "type": "list",
+      "default": [
+        "/var/lib/registry",
+        "/var/lib/icp/audit"
+      ],
+      "validation": "",
+      "group_name": "mastervirtualmachine",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": true,
+      "immutable_after_create": false
+    },
+    {
+      "name": "proxy_hostname_ip",
+      "label": "Proxy Node Hostname",
+      "description": "Proxy Node Hostname and IP Address",
+      "type": "map",
+      "default": { "Enter Hostname": "0.0.0.0" },
+      "validation": "",
+      "group_name": "proxyvirtualmachine",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "proxy_vcpu",
+      "label": "Proxy Node vCPU Allocation",
+      "description": "Proxy Node vCPU Allocation",
+      "type": "string",
+      "default": "2",
+      "validation": "",
+      "group_name": "proxyvirtualmachine",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "proxy_memory",
+      "label": "Proxy Node Memory Allocation (mb)",
+      "description": "Proxy Node Node Memory Allocation (mb)",
+      "type": "string",
+      "default": "8192",
+      "validation": "",
+      "group_name": "proxyvirtualmachine",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
     },
     {
       "name": "proxy_vm_ipv4_gateway",
+      "label": "Proxy Node IP Gateway",
       "description": "Proxy Node IP Gateway Address",
       "type": "string",
+      "default": "",
+      "validation": "",
+      "group_name": "proxyvirtualmachine",
       "required": true,
       "secured": false,
-      "label": "Proxy Node IP Gateway",
       "hidden": false,
       "immutable": false,
-      "group_name": "proxyvirtualmachine",
-      "regex": "^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$",
+      "immutable_after_create": false,
       "regexdesc": "Provide a Valid IP address for the Virtual Machine Gateway"
     },
     {
       "name": "proxy_vm_ipv4_prefix_length",
+      "label": "Proxy Node IP Netmask (CIDR)",
       "description": "Integer value between 1 and 32 for the prefix length, CIDR, to use when statically assigning an IPv4 address",
       "type": "string",
+      "default": "",
+      "validation": "",
+      "group_name": "proxyvirtualmachine",
       "required": true,
       "secured": false,
-      "label": "Proxy Node IP Netmask (CIDR)",
       "hidden": false,
       "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "proxy_vm_disk1_size",
+      "label": "Proxy Node Disk Size (GB)",
+      "description": "proxy Node Disk Size Disk 1 (GB)",
+      "type": "string",
+      "default": "100",
+      "validation": "",
       "group_name": "proxyvirtualmachine",
-      "regex": "^([8-9]|[1-2][0-9]|3[0-2])$"
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "proxy_vm_disk1_keep_on_remove",
+      "label": "Proxy Node Keep Disk on Remove",
+      "description": "Proxy Vm Disk 1 Keep On Remove",
+      "type": "string",
+      "default": "false",
+      "validation": "",
+      "group_name": "proxyvirtualmachine",
+      "required": true,
+      "secured": false,
+      "hidden": true,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "proxy_vm_disk2_enable",
+      "label": "Proxy Node Datastore Name - Disk 2",
+      "description": "Proxy Vm Disk 2 Enable",
+      "type": "string",
+      "default": "false",
+      "validation": "",
+      "group_name": "proxyvirtualmachine",
+      "required": true,
+      "secured": false,
+      "hidden": true,
+      "immutable": false,
+      "immutable_after_create": false,
+      "options": [
+        {
+          "value": "true",
+          "label": "true"
+        },
+        {
+          "value": "false",
+          "label": "false",
+          "default": true
+        }
+      ]
+    },
+    {
+      "name": "proxy_vm_disk2_size",
+      "label": "Proxy Node Disk Size (GB)",
+      "description": "Proxy Node Disk Size Disk 2 (GB)",
+      "type": "string",
+      "default": "50",
+      "validation": "",
+      "group_name": "proxyvirtualmachine",
+      "required": true,
+      "secured": false,
+      "hidden": true,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "proxy_vm_disk2_keep_on_remove",
+      "label": "Proxy Node Keep Disk on Remove - Disk 2",
+      "description": "Proxy Vm Disk 2 Keep On Remove",
+      "type": "string",
+      "default": "false",
+      "validation": "",
+      "group_name": "proxyvirtualmachine",
+      "required": true,
+      "secured": false,
+      "hidden": true,
+      "immutable": false,
+      "immutable_after_create": false
     },
     {
       "name": "worker_hostname_ip",
-      "default": {
-        "Enter Hostname": "0.0.0.0"
-      },
+      "label": "Worker Node Hostname",
       "description": "Worker Node Hostname and IP Address",
       "type": "map",
+      "default": { "Enter Hostname": "0.0.0.0" },
+      "validation": "",
+      "group_name": "workervirtualmachine",
       "required": true,
       "secured": false,
-      "label": "Worker Node Hostname",
       "hidden": false,
       "immutable": false,
-      "group_name": "workervirtualmachine"
-    },
-    {
-      "name": "worker_memory",
-      "description": "Worker Node Node Memory Allocation (mb)",
-      "default": "8192",
-      "type": "string",
-      "required": true,
-      "secured": false,
-      "label": "Worker Node Memory Allocation (mb)",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "workervirtualmachine"
+      "immutable_after_create": false
     },
     {
       "name": "worker_vcpu",
+      "label": "Worker Node vCPU Allocation",
       "description": "Worker Node vCPU Allocation",
-      "default": "4",
       "type": "string",
+      "default": "4",
+      "validation": "",
+      "group_name": "workervirtualmachine",
       "required": true,
       "secured": false,
-      "label": "Worker Node vCPU Allocation",
       "hidden": false,
       "immutable": false,
-      "group_name": "workervirtualmachine"
+      "immutable_after_create": false
     },
     {
-      "name": "worker_vm_disk1_keep_on_remove",
-      "default": "false",
+      "name": "worker_memory",
+      "label": "Worker Node Memory Allocation (mb)",
+      "description": "Worker Node Node Memory Allocation (mb)",
       "type": "string",
+      "default": "8192",
+      "validation": "",
+      "group_name": "workervirtualmachine",
       "required": true,
       "secured": false,
-      "label": "Worker Node Keep Disk on Remove",
-      "hidden": true,
+      "hidden": false,
       "immutable": false,
-      "group_name": "workervirtualmachine"
+      "immutable_after_create": false
+    },
+    {
+      "name": "worker_vm_ipv4_gateway",
+      "label": "Worker Node IP Gateway",
+      "description": "Worker Node IP Gateway Address",
+      "type": "string",
+      "default": "",
+      "validation": "",
+      "group_name": "workervirtualmachine",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false,
+      "regexdesc": "Provide a Valid IP address for the Virtual Machine Gateway"
+    },
+    {
+      "name": "worker_vm_ipv4_prefix_length",
+      "label": "Worker Node IP Netmask (CIDR)",
+      "description": "Integer workerlue between 1 and 32 for the prefix length, CIDR, to use when statically assigning an IPv4 address",
+      "type": "string",
+      "default": "",
+      "validation": "",
+      "group_name": "workervirtualmachine",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
     },
     {
       "name": "worker_vm_disk1_size",
+      "label": "Worker Node Disk Size (GB)",
       "description": "Worker Node Disk Size Disk 1 (GB)",
-      "default": "200",
       "type": "string",
+      "default": "200",
+      "validation": "",
+      "group_name": "workervirtualmachine",
       "required": true,
       "secured": false,
-      "label": "Worker Node Disk Size (GB)",
       "hidden": false,
       "immutable": false,
-      "group_name": "workervirtualmachine"
+      "immutable_after_create": false
+    },
+    {
+      "name": "worker_vm_disk1_keep_on_remove",
+      "label": "Worker Node Keep Disk on Remove",
+      "description": "Worker Vm Disk 1 Keep On Remove",
+      "type": "string",
+      "default": "false",
+      "validation": "",
+      "group_name": "workervirtualmachine",
+      "required": true,
+      "secured": false,
+      "hidden": true,
+      "immutable": false,
+      "immutable_after_create": false
     },
     {
       "name": "worker_vm_disk2_enable",
-      "default": "true",
+      "label": "Worker Node Datastore Name - Disk 2",
+      "description": "Worker Vm Disk 2 Enable",
       "type": "string",
+      "default": "true",
+      "validation": "",
+      "group_name": "workervirtualmachine",
       "required": true,
       "secured": false,
-      "label": "Worker Node Datastore Name - Disk 2",
       "hidden": true,
       "immutable": false,
+      "immutable_after_create": false,
       "options": [
         {
           "workerlue": "true",
@@ -892,65 +649,49 @@
           "workerlue": "false",
           "label": "false"
         }
-      ],
-      "group_name": "workervirtualmachine"
-    },
-    {
-      "name": "worker_vm_disk2_keep_on_remove",
-      "default": "false",
-      "type": "string",
-      "required": true,
-      "secured": false,
-      "label": "Worker Node Keep Disk on Remove - Disk 2",
-      "hidden": true,
-      "immutable": false,
-      "group_name": "workervirtualmachine"
+      ]
     },
     {
       "name": "worker_vm_disk2_size",
+      "label": "Worker Node Disk Size (GB) - Disk 2 (Gluster FS)",
       "description": "Worker Node Disk Size Disk 2 (GB)",
       "type": "string",
-      "required": true,
-      "secured": false,
-      "label": "Worker Node Disk Size (GB) - Disk 2 (Gluster FS)",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "workervirtualmachine"
-    },
-    {
-      "name": "worker_vm_ipv4_gateway",
-      "description": "Worker Node IP Gateway Address",
-      "type": "string",
-      "required": true,
-      "secured": false,
-      "label": "Worker Node IP Gateway",
-      "hidden": false,
-      "immutable": false,
+      "default": "85",
+      "validation": "",
       "group_name": "workervirtualmachine",
-      "regex": "^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$",
-      "regexdesc": "Provide a Valid IP address for the Virtual Machine Gateway"
-    },
-    {
-      "name": "worker_vm_ipv4_prefix_length",
-      "description": "Integer workerlue between 1 and 32 for the prefix length, CIDR, to use when statically assigning an IPv4 address",
-      "type": "string",
       "required": true,
       "secured": false,
-      "label": "Worker Node IP Netmask (CIDR)",
       "hidden": false,
       "immutable": false,
-      "group_name": "workervirtualmachine",
-      "regex": "^([8-9]|[1-2][0-9]|3[0-2])$"
+      "immutable_after_create": false
     },
     {
-      "name": "enable_vm_va",
+      "name": "worker_vm_disk2_keep_on_remove",
+      "label": "Worker Node Keep Disk on Remove - Disk 2",
+      "description": "Worker Vm Disk 2 Keep On Remove",
+      "type": "string",
       "default": "false",
-      "type": "string",
+      "validation": "",
+      "group_name": "workervirtualmachine",
       "required": true,
       "secured": false,
-      "label": "Enable IBM Cloud Private Vulnerability Advisor Node",
-      "hidden": false,
+      "hidden": true,
       "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "worker_enable_glusterFS",
+      "label": "Enable IBM Cloud Private GlusterFS on worker Nodes",
+      "description": "Enable / Disable the installation of Gluster File System in  IBM Cloud Private Installation",
+      "type": "string",
+      "default": "true",
+      "validation": "",
+      "group_name": "icpmultinode",
+      "required": true,
+      "secured": false,
+      "hidden": true,
+      "immutable": false,
+      "immutable_after_create": false,
       "options": [
         {
           "value": "true",
@@ -961,79 +702,134 @@
           "value": "false",
           "label": "false"
         }
-      ],
-      "group_name": "vavirtualmachine"
-    },     
-    {
-      "name": "va_hostname_ip",
-      "default": {
-        "Enter Hostname": "0.0.0.0"
-      },
-      "description": "Vulnerability Advisor Node Node Hostname and IP Address",
-      "type": "map",
-      "required": false,
-      "secured": false,
-      "label": "Vulnerability Advisor Node Hostname",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "vavirtualmachine"
+      ]
     },
     {
-      "name": "va_memory",
-      "description": "Vulnerability Advsior Node Node Memory Allocation (mb)",
-      "default": "8192",
+      "name": "gluster_volumetype_none",
+      "label": "Gluster Volumetype None",
+      "description": "Gluster durability",
       "type": "string",
-      "required": false,
+      "default": "true",
+      "validation": "",
+      "group_name": "",
+      "required": true,
       "secured": false,
-      "label": "Vulnerability Advisor Node Memory Allocation (mb)",
       "hidden": false,
       "immutable": false,
-      "group_name": "vavirtualmachine"
+      "immutable_after_create": false
+    },
+    {
+      "name": "va_hostname_ip",
+      "label": "Vulnerability Advisor Node Hostname",
+      "description": "Vulnerability Advisor Node Node Hostname and IP Address",
+      "type": "map",
+      "default": { "Enter Hostname": "0.0.0.0" },
+      "validation": "",
+      "group_name": "vavirtualmachine",
+      "required": false,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
     },
     {
       "name": "va_vcpu",
+      "label": "Vulnerability Advisor Node vCPU Allocation",
       "description": "Vulnerability Advisor Node vCPU Allocation",
-      "default": "4",
       "type": "string",
+      "default": "4",
+      "validation": "",
+      "group_name": "vavirtualmachine",
       "required": false,
       "secured": false,
-      "label": "Vulnerability Advisor Node vCPU Allocation",
       "hidden": false,
       "immutable": false,
-      "group_name": "vavirtualmachine"
+      "immutable_after_create": false
     },
     {
-      "name": "va_vm_disk1_keep_on_remove",
-      "default": "false",
+      "name": "va_memory",
+      "label": "Vulnerability Advisor Node Memory Allocation (mb)",
+      "description": "Vulnerability Advsior Node Node Memory Allocation (mb)",
       "type": "string",
+      "default": "8192",
+      "validation": "",
+      "group_name": "vavirtualmachine",
       "required": false,
       "secured": false,
-      "label": "Vulnerability Advisor Node Keep Disk on Remove",
-      "hidden": true,
+      "hidden": false,
       "immutable": false,
-      "group_name": "vavirtualmachine"
+      "immutable_after_create": false
+    },
+    {
+      "name": "va_vm_ipv4_gateway",
+      "label": "Vulnerability Advisor Node IP Gateway",
+      "description": "Vulnerability Advisor  Node IP Gateway Address",
+      "type": "string",
+      "default": "",
+      "validation": "",
+      "group_name": "vavirtualmachine",
+      "required": false,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false,
+      "regexdesc": "Provide a Valid IP address for the Virtual Machine Gateway"
+    },
+    {
+      "name": "va_vm_ipv4_prefix_length",
+      "label": "Vulnerability Advisor Node IP Netmask (CIDR)",
+      "description": "Integer value between 1 and 32 for the prefix length, CIDR, to use when statically assigning an IPv4 address",
+      "type": "string",
+      "default": "",
+      "validation": "",
+      "group_name": "vavirtualmachine",
+      "required": false,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
     },
     {
       "name": "va_vm_disk1_size",
+      "label": "Vulnerability Advisor Node Disk Size (GB)",
       "description": "Management Node Disk Size Disk 1 (GB)",
-      "default": "150",
       "type": "string",
+      "default": "150",
+      "validation": "",
+      "group_name": "vavirtualmachine",
       "required": false,
       "secured": false,
-      "label": "Vulnerability Advisor Node Disk Size (GB)",
       "hidden": false,
       "immutable": false,
-      "group_name": "vavirtualmachine"
+      "immutable_after_create": false
+    },
+    {
+      "name": "va_vm_disk1_keep_on_remove",
+      "label": "Vulnerability Advisor Node Keep Disk on Remove",
+      "description": "Va Vm Disk 1 Keep On Remove",
+      "type": "string",
+      "default": "false",
+      "validation": "",
+      "group_name": "vavirtualmachine",
+      "required": false,
+      "secured": false,
+      "hidden": true,
+      "immutable": false,
+      "immutable_after_create": false
     },
     {
       "name": "va_vm_disk2_enable",
-      "default": "false",
+      "label": "Vulnerability Advisor Node Datastore Name - Disk 2",
+      "description": "Va Vm Disk 2 Enable",
       "type": "string",
+      "default": "false",
+      "validation": "",
+      "group_name": "vavirtualmachine",
       "required": false,
       "secured": false,
-      "label": "Vulnerability Advisor Node Datastore Name - Disk 2",
       "hidden": true,
       "immutable": false,
+      "immutable_after_create": false,
       "options": [
         {
           "value": "true",
@@ -1044,214 +840,173 @@
           "label": "false",
           "default": true
         }
-      ],
-      "group_name": "vavirtualmachine"
-    },
-
-    {
-      "name": "va_vm_disk2_keep_on_remove",
-      "default": "false",
-      "type": "string",
-      "required": false,
-      "secured": false,
-      "label": "Vulnerability Advisor Node Keep Disk on Remove - Disk 2",
-      "hidden": true,
-      "immutable": false,
-      "group_name": "vavirtualmachine"
+      ]
     },
     {
       "name": "va_vm_disk2_size",
+      "label": "Vulnerability Advisor Node Disk Size (GB)",
       "description": "Master Node Disk Size Disk 2 (GB)",
-      "default": "50",
       "type": "string",
+      "default": "50",
+      "validation": "",
+      "group_name": "vavirtualmachine",
       "required": false,
       "secured": false,
-      "label": "Vulnerability Advisor Node Disk Size (GB)",
       "hidden": true,
       "immutable": false,
-      "group_name": "vavirtualmachine"
+      "immutable_after_create": false
     },
     {
-      "name": "va_vm_ipv4_gateway",
-      "description": "Vulnerability Advisor  Node IP Gateway Address",
+      "name": "va_vm_disk2_keep_on_remove",
+      "label": "Vulnerability Advisor Node Keep Disk on Remove - Disk 2",
+      "description": "Va Vm Disk 2 Keep On Remove",
       "type": "string",
+      "default": "false",
+      "validation": "",
+      "group_name": "vavirtualmachine",
       "required": false,
       "secured": false,
-      "label": "Vulnerability Advisor Node IP Gateway",
+      "hidden": true,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "enable_vm_va",
+      "label": "Enable IBM Cloud Private Vulnerability Advisor Node",
+      "description": "Enable Vm Va",
+      "type": "string",
+      "default": "false",
+      "validation": "",
+      "group_name": "vavirtualmachine",
+      "required": true,
+      "secured": false,
       "hidden": false,
       "immutable": false,
-      "group_name": "vavirtualmachine",
-      "regex": "^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$",
+      "immutable_after_create": false,
+      "options": [
+        {
+          "value": "true",
+          "label": "true",
+          "default": true
+        },
+        {
+          "value": "false",
+          "label": "false"
+        }
+      ]
+    },
+    {
+      "name": "manage_hostname_ip",
+      "label": "Management Node Hostname",
+      "description": "Management Node Hostname and IP Address",
+      "type": "map",
+      "default": { "Enter Hostname": "0.0.0.0" },
+      "validation": "",
+      "group_name": "mgmtvirtualmachine",
+      "required": false,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "manage_vcpu",
+      "label": "Management Node vCPU Allocation",
+      "description": "Management Node vCPU Allocation",
+      "type": "string",
+      "default": "8",
+      "validation": "",
+      "group_name": "mgmtvirtualmachine",
+      "required": false,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "manage_memory",
+      "label": "Management Node Memory Allocation (mb)",
+      "description": "Management Node Node Memory Allocation (mb)",
+      "type": "string",
+      "default": "8192",
+      "validation": "",
+      "group_name": "mgmtvirtualmachine",
+      "required": false,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "manage_vm_ipv4_gateway",
+      "label": "Management Node IP Gateway",
+      "description": "Management Node IP Gateway Address",
+      "type": "string",
+      "default": "",
+      "validation": "",
+      "group_name": "mgmtvirtualmachine",
+      "required": false,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false,
       "regexdesc": "Provide a Valid IP address for the Virtual Machine Gateway"
     },
     {
-      "name": "va_vm_ipv4_prefix_length",
+      "name": "manage_vm_ipv4_prefix_length",
+      "label": "Management Node IP Netmask (CIDR)",
       "description": "Integer value between 1 and 32 for the prefix length, CIDR, to use when statically assigning an IPv4 address",
       "type": "string",
+      "default": "",
+      "validation": "",
+      "group_name": "mgmtvirtualmachine",
       "required": false,
       "secured": false,
-      "label": "Vulnerability Advisor Node IP Netmask (CIDR)",
       "hidden": false,
       "immutable": false,
-      "group_name": "vavirtualmachine",
-      "regex": "^([8-9]|[1-2][0-9]|3[0-2])$"
+      "immutable_after_create": false
     },
-
     {
-      "name": "vm_adapter_type",
-      "description": "Network adapter type for vNIC Configuration",
-      "default": "vmxnet3",
+      "name": "manage_vm_disk1_size",
+      "label": "Management Node Disk Size (GB)",
+      "description": "Management Node Disk Size Disk 1 (GB)",
       "type": "string",
-      "required": true,
+      "default": "150",
+      "validation": "",
+      "group_name": "mgmtvirtualmachine",
+      "required": false,
       "secured": false,
-      "label": "vSphere Network Adapter Type",
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "manage_vm_disk1_keep_on_remove",
+      "label": "Management Node Keep Disk on Remove",
+      "description": "Manage Vm Disk 1 Keep On Remove",
+      "type": "string",
+      "default": "false",
+      "validation": "",
+      "group_name": "mgmtvirtualmachine",
+      "required": false,
+      "secured": false,
       "hidden": true,
       "immutable": false,
-      "group_name": "generalvmtemplate"
+      "immutable_after_create": false
     },
     {
-      "name": "vm_dns_servers",
-      "description": "List of DNS servers for the virtual network adapter. For more than one DNS, the values can be entered by adding more fields.",
-      "type": "list",
-      "required": true,
-      "secured": false,
-      "label": "IBM Cloud Private DNS Servers",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "generalvmtemplate"
-    },
-    {
-      "name": "vm_dns_suffixes",
-      "description": "Name resolution suffixes for the virtual network adapter",
-      "type": "list",
-      "required": true,
-      "secured": false,
-      "label": "IBM Cloud Private DNS Suffixes",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "generalvmtemplate"
-    },
-    {
-      "name": "vm_domain",
-      "description": "IBM Cloud Private Virtual Machine's domain name",
+      "name": "manage_vm_disk2_enable",
+      "label": "Management Node Datastore Name - Disk 2",
+      "description": "Manage Vm Disk 2 Enable",
       "type": "string",
-      "required": true,
-      "secured": false,
-      "label": "IBM Cloud Private Domain Name",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "generalvmtemplate"
-    },
-    {
-      "name": "vm_disk1_datastore",
-      "description": "Virtual Machine Datastore Name - Disk 1",
-      "type": "string",
-      "required": true,
-      "secured": false,
-      "label": "Virtual Machine Datastore Name - Disk 1",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "generalvmtemplate"
-    },
-    {
-      "name": "vm_disk2_datastore",
-      "description": "Virtual Machine Datastore Name - Disk 2",
-      "type": "string",
-      "required": true,
-      "secured": false,
-      "label": "Virtual Machine Datastore Name - Disk 2",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "generalvmtemplate"
-    },
-    {
-      "name": "vm_template",
-      "description": "Virtual Machine Template Name",
-      "type": "string",
-      "required": true,
-      "secured": false,
-      "label": "Virtual Machine Template Name",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "generalvmtemplate"
-    },
-    {
-      "name": "vm_os_user",
-      "description": "The user name to use while configuring the IBM Cloud Private Vulnerability Advisor Nodes.",
-      "default": "root",
-      "type": "string",
-      "required": true,
-      "secured": false,
-      "label": "Virtual Machine  Template User Name",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "generalvmtemplate"
-    },
-    {
-      "name": "vm_os_password",
-      "description": "The user password to use while configuring the IBM Cloud Private Single Node.",
-      "type": "password",
-      "required": true,
-      "secured": true,
-      "label": "Virtual Machine Template User Password",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "generalvmtemplate"
-    },
-
-    {
-      "name": "vsphere_datacenter",
-      "description": "The name of a Datacenter in which to launch the IBM Cloud Private.",
-      "type": "string",
-      "required": true,
-      "secured": false,
-      "label": "vSphere DataCenter Name",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "cloud"
-    },
-    {
-      "name": "vsphere_resource_pool",
-      "description": "Name of the default resource pool for the cluster. Specified as 'cluster_name/resource_pool'",
-      "type": "string",
-      "required": true,
-      "secured": false,
-      "label": "vSphere Resource Pool",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "cloud"
-    },
-    {
-      "name": "vm_network_interface_label",
-      "description": "vSphere Port Group name to assign to this network interface.",
-      "type": "string",
-      "required": true,
-      "secured": false,
-      "label": "vSphere Port Group Name",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "cloud"
-    },
-    {
-      "name": "vm_folder",
-      "description": "vSphere Folder name",
-      "type": "string",
+      "default": "false",
+      "validation": "",
+      "group_name": "mgmtvirtualmachine",
       "required": false,
       "secured": false,
-      "label": "vSphere Folder Name",
-      "hidden": false,
+      "hidden": true,
       "immutable": false,
-      "group_name": "cloud"
-    },
-    {
-      "name": "enable_nfs",
-      "default": "false",
-      "type": "string",
-      "required": true,
-      "secured": false,
-      "label": "Enable IBM Cloud Private NFS Server Node",
-      "hidden": false,
-      "immutable": false,
+      "immutable_after_create": false,
       "options": [
         {
           "value": "true",
@@ -1261,82 +1016,199 @@
           "value": "false",
           "label": "false",
           "default": true
-          }
-      ],
-      "group_name": "nfs_servervirtualmachine"
+        }
+      ]
     },
-    
+    {
+      "name": "manage_vm_disk2_size",
+      "label": "Management Node Disk Size (GB)",
+      "description": "Management Node Disk Size Disk 2 (GB)",
+      "type": "string",
+      "default": "50",
+      "validation": "",
+      "group_name": "mgmtvirtualmachine",
+      "required": false,
+      "secured": false,
+      "hidden": true,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "manage_vm_disk2_keep_on_remove",
+      "label": "Management Node Keep Disk on Remove - Disk 2",
+      "description": "Manage Vm Disk 2 Keep On Remove",
+      "type": "string",
+      "default": "false",
+      "validation": "",
+      "group_name": "mgmtvirtualmachine",
+      "required": false,
+      "secured": false,
+      "hidden": true,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "enable_vm_management",
+      "label": "Enable IBM Cloud Private Management Node Nodes",
+      "description": "Enable Vm Management",
+      "type": "string",
+      "default": "true",
+      "validation": "",
+      "group_name": "mgmtvirtualmachine",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false,
+      "options": [
+        {
+          "value": "true",
+          "label": "true",
+          "default": true
+        },
+        {
+          "value": "false",
+          "label": "false"
+        }
+      ]
+    },
+    {
+      "name": "enable_nfs",
+      "label": "Enable IBM Cloud Private NFS Server Node",
+      "description": "Enable Nfs",
+      "type": "string",
+      "default": "false",
+      "validation": "",
+      "group_name": "nfs_servervirtualmachine",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false,
+      "options": [
+        {
+          "value": "true",
+          "label": "true"
+        },
+        {
+          "value": "false",
+          "label": "false",
+          "default": true
+        }
+      ]
+    },
     {
       "name": "nfs_server_hostname_ip",
-      "default": {
-        "Enter Hostname": "0.0.0.0"
-      },
+      "label": "NFS Server Node Hostname",
       "description": "NFS Server Node Node Hostname and IP Address",
       "type": "map",
+      "default": { "Enter Hostname": "0.0.0.0" },
+      "validation": "",
+      "group_name": "nfs_servervirtualmachine",
       "required": false,
       "secured": false,
-      "label": "NFS Server Node Hostname",
       "hidden": false,
       "immutable": false,
-      "group_name": "nfs_servervirtualmachine"
-    },
-    {
-      "name": "nfs_server_memory",
-      "description": "NFS Server Node Node Memory Allocation (mb)",
-      "default": "8192",
-      "type": "string",
-      "required": false,
-      "secured": false,
-      "label": "NFS Server Node Memory Allocation (mb)",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "nfs_servervirtualmachine"
+      "immutable_after_create": false
     },
     {
       "name": "nfs_server_vcpu",
+      "label": "NFS Server Node vCPU Allocation",
       "description": "NFS Server Node vCPU Allocation",
-      "default": "4",
       "type": "string",
+      "default": "4",
+      "validation": "",
+      "group_name": "nfs_servervirtualmachine",
       "required": false,
       "secured": false,
-      "label": "NFS Server Node vCPU Allocation",
       "hidden": false,
       "immutable": false,
-      "group_name": "nfs_servervirtualmachine"
+      "immutable_after_create": false
     },
     {
-      "name": "nfs_server_vm_disk1_keep_on_remove",
-      "default": "false",
+      "name": "nfs_server_memory",
+      "label": "NFS Server Node Memory Allocation (mb)",
+      "description": "NFS Server Node Node Memory Allocation (mb)",
       "type": "string",
+      "default": "8192",
+      "validation": "",
+      "group_name": "nfs_servervirtualmachine",
       "required": false,
       "secured": false,
-      "label": "NFS Server Node Keep Disk on Remove",
-      "hidden": true,
+      "hidden": false,
       "immutable": false,
-      "group_name": "nfs_servervirtualmachine"
+      "immutable_after_create": false
+    },
+    {
+      "name": "nfs_server_vm_ipv4_gateway",
+      "label": "NFS Server Node IP Gateway",
+      "description": "NFS Server Node IP Gateway Address",
+      "type": "string",
+      "default": "",
+      "validation": "",
+      "group_name": "nfs_servervirtualmachine",
+      "required": false,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false,
+      "regexdesc": "Provide a Valid IP address for the Virtual Machine Gateway"
+    },
+    {
+      "name": "nfs_server_vm_ipv4_prefix_length",
+      "label": "NFS Server Node IP Netmask (CIDR)",
+      "description": "Integer nfs_serverlue between 1 and 32 for the prefix length, CIDR, to use when statically assigning an IPv4 address",
+      "type": "string",
+      "default": "",
+      "validation": "",
+      "group_name": "nfs_servervirtualmachine",
+      "required": false,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
     },
     {
       "name": "nfs_server_vm_disk1_size",
+      "label": "NFS Server Node Disk Size (GB)",
       "description": "Management Node Disk Size Disk 1 (GB)",
-      "default": "150",
       "type": "string",
+      "default": "150",
+      "validation": "",
+      "group_name": "nfs_servervirtualmachine",
       "required": false,
       "secured": false,
-      "label": "NFS Server Node Disk Size (GB)",
       "hidden": false,
       "immutable": false,
-      "group_name": "nfs_servervirtualmachine"
+      "immutable_after_create": false
+    },
+    {
+      "name": "nfs_server_vm_disk1_keep_on_remove",
+      "label": "NFS Server Node Keep Disk on Remove",
+      "description": "Nfs Server Vm Disk 1 Keep On Remove",
+      "type": "string",
+      "default": "false",
+      "validation": "",
+      "group_name": "nfs_servervirtualmachine",
+      "required": false,
+      "secured": false,
+      "hidden": true,
+      "immutable": false,
+      "immutable_after_create": false
     },
     {
       "name": "nfs_server_vm_disk2_enable",
+      "label": "NFS Server Node Datastore Name - Disk 2",
       "description": "Management Node Disk Size Disk 2 (GB)",
-      "default": "false",
       "type": "string",
+      "default": "false",
+      "validation": "",
+      "group_name": "nfs_servervirtualmachine",
       "required": false,
       "secured": false,
-      "label": "NFS Server Node Datastore Name - Disk 2",
       "hidden": true,
       "immutable": false,
+      "immutable_after_create": false,
       "options": [
         {
           "nfs_serverlue": "true",
@@ -1347,117 +1219,518 @@
           "nfs_serverlue": "false",
           "label": "false"
         }
-      ],
-      "group_name": "nfs_servervirtualmachine"
-    },
-    {
-      "name": "nfs_server_vm_disk2_keep_on_remove",
-      "default": "false",
-      "type": "string",
-      "required": false,
-      "secured": false,
-      "label": "NFS Server Node Keep Disk on Remove - Disk 2",
-      "hidden": true,
-      "immutable": false,
-      "group_name": "nfs_servervirtualmachine"
+      ]
     },
     {
       "name": "nfs_server_vm_disk2_size",
+      "label": "NFS Server Node Disk Size (GB) - Disk 2 (NFS Size)",
       "description": "NFS Server Node Disk Size Disk 2 (GB)",
       "type": "string",
+      "default": "100",
+      "validation": "",
+      "group_name": "nfs_servervirtualmachine",
       "required": false,
       "secured": false,
-      "label": "NFS Server Node Disk Size (GB) - Disk 2 (NFS Size)",
       "hidden": false,
       "immutable": false,
-      "group_name": "nfs_servervirtualmachine"
+      "immutable_after_create": false
     },
     {
-      "name": "nfs_server_vm_ipv4_gateway",
-      "description": "NFS Server Node IP Gateway Address",
+      "name": "nfs_server_vm_disk2_keep_on_remove",
+      "label": "NFS Server Node Keep Disk on Remove - Disk 2",
+      "description": "Nfs Server Vm Disk 2 Keep On Remove",
       "type": "string",
+      "default": "false",
+      "validation": "",
+      "group_name": "nfs_servervirtualmachine",
       "required": false,
       "secured": false,
-      "label": "NFS Server Node IP Gateway",
-      "hidden": false,
+      "hidden": true,
       "immutable": false,
-      "group_name": "nfs_servervirtualmachine",
-      "regex": "^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9]).){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$",
-      "regexdesc": "Provide a Valid IP address for the Virtual Machine Gateway"
-    },
-    {
-      "name": "nfs_server_vm_ipv4_prefix_length",
-      "description": "Integer nfs_serverlue between 1 and 32 for the prefix length, CIDR, to use when statically assigning an IPv4 address",
-      "type": "string",
-      "required": false,
-      "secured": false,
-      "label": "NFS Server Node IP Netmask (CIDR)",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "nfs_servervirtualmachine",
-      "regex": "^([8-9]|[1-2][0-9]|3[0-2])$"
+      "immutable_after_create": false
     },
     {
       "name": "nfs_server_folder",
+      "label": "NFS Server Node Server Folder",
       "description": "IBM Cloud Private Master Node NFS Folder Name",
-      "default": "/var/nfs",
       "type": "string",
+      "default": "/var/nfs",
+      "validation": "",
+      "group_name": "nfs_servervirtualmachine",
       "required": false,
       "secured": false,
-      "label": "NFS Server Node Server Folder",
       "hidden": false,
       "immutable": false,
-      "group_name": "nfs_servervirtualmachine"
+      "immutable_after_create": false
     },
     {
       "name": "nfs_server_mount_point",
+      "label": "NFS Server Node Mount Point",
       "description": "IBM Cloud Private Master Node NFS Mount Name",
-      "default": "/mnt/nfs",
       "type": "string",
+      "default": "/mnt/nfs",
+      "validation": "",
+      "group_name": "nfs_servervirtualmachine",
       "required": false,
       "secured": false,
-      "label": "NFS Server Node Mount Point",
       "hidden": false,
       "immutable": false,
-      "group_name": "nfs_servervirtualmachine"
+      "immutable_after_create": false
+    },
+    {
+      "name": "vm_domain",
+      "label": "IBM Cloud Private Domain Name",
+      "description": "IBM Cloud Private Virtual Machine's domain name",
+      "type": "string",
+      "default": "",
+      "validation": "",
+      "group_name": "generalvmtemplate",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "vm_network_interface_label",
+      "label": "vSphere Port Group Name",
+      "description": "vSphere Port Group name to assign to this network interface.",
+      "type": "string",
+      "default": "",
+      "validation": "",
+      "group_name": "cloud",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "vm_adapter_type",
+      "label": "vSphere Network Adapter Type",
+      "description": "Network adapter type for vNIC Configuration",
+      "type": "string",
+      "default": "vmxnet3",
+      "validation": "",
+      "group_name": "generalvmtemplate",
+      "required": true,
+      "secured": false,
+      "hidden": true,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "vm_folder",
+      "label": "vSphere Folder Name",
+      "description": "vSphere Folder name",
+      "type": "string",
+      "default": "",
+      "validation": "",
+      "group_name": "cloud",
+      "required": false,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "vm_dns_servers",
+      "label": "IBM Cloud Private DNS Servers",
+      "description": "List of DNS servers for the virtual network adapter. For more than one DNS, the values can be entered by adding more fields.",
+      "type": "list",
+      "default": "",
+      "validation": "",
+      "group_name": "generalvmtemplate",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "vm_dns_suffixes",
+      "label": "IBM Cloud Private DNS Suffixes",
+      "description": "Name resolution suffixes for the virtual network adapter",
+      "type": "list",
+      "default": "",
+      "validation": "",
+      "group_name": "generalvmtemplate",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "vsphere_datacenter",
+      "label": "vSphere DataCenter Name",
+      "description": "The name of a Datacenter in which to launch the IBM Cloud Private.",
+      "type": "string",
+      "default": "",
+      "validation": "",
+      "group_name": "cloud",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "vsphere_resource_pool",
+      "label": "vSphere Resource Pool",
+      "description": "Name of the default resource pool for the cluster. Specified as 'cluster_name/resource_pool'",
+      "type": "string",
+      "default": "",
+      "validation": "",
+      "group_name": "cloud",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "vm_template",
+      "label": "Virtual Machine Template Name",
+      "description": "Virtual Machine Template Name",
+      "type": "string",
+      "default": "",
+      "validation": "",
+      "group_name": "generalvmtemplate",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "vm_os_user",
+      "label": "Virtual Machine  Template User Name",
+      "description": "The user name to use while configuring the IBM Cloud Private Vulnerability Advisor Nodes.",
+      "type": "string",
+      "default": "root",
+      "validation": "",
+      "group_name": "generalvmtemplate",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "vm_os_password",
+      "label": "Virtual Machine Template User Password",
+      "description": "The user password to use while configuring the IBM Cloud Private Single Node.",
+      "type": "password",
+      "default": "",
+      "validation": "",
+      "group_name": "generalvmtemplate",
+      "required": true,
+      "secured": true,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "vm_disk1_datastore",
+      "label": "Virtual Machine Datastore Name - Disk 1",
+      "description": "Virtual Machine Datastore Name - Disk 1",
+      "type": "string",
+      "default": "",
+      "validation": "",
+      "group_name": "generalvmtemplate",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "vm_disk2_datastore",
+      "label": "Virtual Machine Datastore Name - Disk 2",
+      "description": "Virtual Machine Datastore Name - Disk 2",
+      "type": "string",
+      "default": "",
+      "validation": "",
+      "group_name": "generalvmtemplate",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "icp_private_ssh_key",
+      "label": "IBM Cloud Private - Private SSH Key",
+      "description": "IBM Cloud Private - Private SSH key for access between boxes (base64 encoded)",
+      "type": "string",
+      "default": "",
+      "validation": "",
+      "group_name": "icpsshkey",
+      "required": true,
+      "secured": false,
+      "hidden": true,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "icp_public_ssh_key",
+      "label": "IBM Cloud Private - Public SSH Key",
+      "description": "IBM Cloud Private - Public SSH key for access between boxes",
+      "type": "string",
+      "default": "",
+      "validation": "",
+      "group_name": "icpsshkey",
+      "required": true,
+      "secured": false,
+      "hidden": true,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "docker_binary_url",
+      "label": "IBM Cloud Private Docker Download Location (http|https|ftp|file)",
+      "description": "Location of the Docker Binaries used by IBM Cloud Private",
+      "type": "string",
+      "default": "",
+      "validation": "",
+      "group_name": "icpdownload",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false,
+      "regexdesc": "http|https|ftp|file Location to download the IBM Cloud Private Docker Binaries"
+    },
+    {
+      "name": "icp_binary_url",
+      "label": "IBM Cloud Private Download Location (http|https|ftp|file)",
+      "description": "Location of the IBM Cloud Private Binaries used by IBM Cloud Private",
+      "type": "string",
+      "default": "",
+      "validation": "",
+      "group_name": "icpdownload",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false,
+      "regexdesc": "http|https|ftp|file Location to download the IBM Cloud Private Binaries"
+    },
+    {
+      "name": "icp_version",
+      "label": "IBM Cloud Private Version",
+      "description": "IBM Cloud Private Version Number",
+      "type": "string",
+      "default": "2.1.0.3",
+      "validation": "",
+      "group_name": "icpdownload",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "kub_version",
+      "label": "Kubernetes Version",
+      "description": "IBM Cloud Private Kubernetes Version Number",
+      "type": "string",
+      "default": "1.10.0",
+      "validation": "",
+      "group_name": "icpdownload",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "icp_cluster_name",
+      "label": "IBM Cloud Private Cluster Name",
+      "description": "IBM Cloud Private Cluster Name",
+      "type": "string",
+      "default": "",
+      "validation": "",
+      "group_name": "icpmultinode",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "enable_bluemix_install",
+      "label": "Enable Bluemix Install",
+      "description": "Enable Bluemix Install",
+      "type": "string",
+      "default": "false",
+      "validation": "",
+      "group_name": "",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "bluemix_token",
+      "label": "Bluemix Token",
+      "description": "Bluemix Token",
+      "type": "string",
+      "default": "",
+      "validation": "",
+      "group_name": "",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "enable_kibana",
+      "label": "Enable IBM Cloud Private Kibana",
+      "description": "Enable / Disable the installation of Kibana Service in IBM Cloud Private Installation",
+      "type": "string",
+      "default": "false",
+      "validation": "",
+      "group_name": "icpmultinode",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false,
+      "options": [
+        {
+          "value": "true",
+          "label": "true"
+        },
+        {
+          "value": "false",
+          "label": "false",
+          "default": true
+        }
+      ]
+    },
+    {
+      "name": "enable_metering",
+      "label": "Enable IBM Cloud Private Metering",
+      "description": "Enable / Disable the installation of Metering Service in IBM Cloud Private Installation",
+      "type": "string",
+      "default": "true",
+      "validation": "",
+      "group_name": "icpmultinode",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false,
+      "options": [
+        {
+          "value": "true",
+          "label": "true",
+          "default": true
+        },
+        {
+          "value": "false",
+          "label": "false"
+        }
+      ]
+    },
+    {
+      "name": "icp_admin_user",
+      "label": "IBM Cloud Private Admin Username",
+      "description": "IBM Cloud Private Admin User Name",
+      "type": "string",
+      "default": "admin",
+      "validation": "",
+      "group_name": "icpmultinode",
+      "required": true,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "icp_admin_password",
+      "label": "IBM Cloud Private Admin Password",
+      "description": "IBM Cloud Private Admin User Password",
+      "type": "password",
+      "default": "admin",
+      "validation": "",
+      "group_name": "icpmultinode",
+      "required": true,
+      "secured": true,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "download_user",
+      "label": "Repository User Name (Optional)",
+      "description": "Username to access a secure repository location",
+      "type": "string",
+      "default": "",
+      "validation": "",
+      "group_name": "icpdownload",
+      "required": false,
+      "secured": false,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
+    },
+    {
+      "name": "download_user_password",
+      "label": "Repository User Password (Optional)",
+      "description": "Password for the Username to access a secure repository location",
+      "type": "password",
+      "default": "",
+      "validation": "",
+      "group_name": "icpdownload",
+      "required": false,
+      "secured": true,
+      "hidden": false,
+      "immutable": false,
+      "immutable_after_create": false
     }
   ],
   "template_output_params": [
     {
       "name": "ibm_cloud_private_admin_url",
-      "type": "string",
-      "description": "IBM Cloud Private Cluster URL.",
-      "hidden": false,
       "label": "OS Template Name",
+      "description": "IBM Cloud Private Cluster URL.",
       "group_name": "content_template_output",
       "secured": false,
+      "hidden": false,
+      "shortname": "",
+      "type": "string",
       "system": false,
       "required": true,
       "immutable": false
     },
     {
       "name": "ibm_cloud_private_admin_user",
+      "label": "IBM Cloud Private Admin Username",
       "description": "IBM Cloud Private Admin Username",
+      "group_name": "content_template_output",
+      "secured": false,
+      "hidden": false,
+      "shortname": "",
       "type": "string",
       "required": true,
-      "secured": false,
-      "label": "IBM Cloud Private Admin Username",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "content_template_output"
+      "immutable": false
     },
     {
       "name": "ibm_cloud_private_admin_password",
+      "label": "IBM Cloud Private Admin Password",
       "description": "IBM Cloud Private Admin Username Password",
+      "group_name": "content_template_output",
+      "secured": true,
+      "hidden": false,
+      "shortname": "",
       "type": "string",
       "required": true,
-      "secured": true,
-      "label": "IBM Cloud Private Admin Password",
-      "hidden": false,
-      "immutable": false,
-      "group_name": "content_template_output"
+      "immutable": false
     }
-
-
   ]
 }
