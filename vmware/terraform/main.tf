@@ -31,7 +31,7 @@ resource "tls_private_key" "generate" {
 
 resource "null_resource" "create-temp-random-dir" {
   provisioner "local-exec" {
-    command = "${format("mkdir -p  /tmp/%s" , "${lower(random_string.random-dir.result)}")}"
+    command = "${format("mkdir -p /tmp/%s" , "${lower(random_string.random-dir.result)}")}"
   }
 }
 
